@@ -40,8 +40,8 @@ function setup() {
   spacebrew.onBooleanMessage(onBooleanMessage);
 
   // connect to spacebrew
-//  spacebrew.connect("sandbox.spacebrew.cc", 9000, "p5.js button ");
-   spacebrew.connect("localhost", 9000, "p5.js button ");
+  spacebrew.connect("sandbox.spacebrew.cc", 9000, "p5.js button ");
+//   spacebrew.connect("localhost", 9000, "p5.js button ");
 
 
 
