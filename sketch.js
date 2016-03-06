@@ -60,12 +60,19 @@ function setup() {
 
 function draw() {
   background(h, 100, 100);
-
+  push();
+  fill(0, 0, 100);
+  textSize(15);
+  textAlign(LEFT);
+  text("SquishBunny is a game you can play with 2 people through Spacebrew", 30, height - 50);
+  text("Connect to me here bit.ly/sbadmin-cloud", 30, height - 30);
+  pop();
+  
+  
   for (var i = 0; i < bunnies.length; i++) {
     //update
     bunnies[i].move();
     //check
-    //bunnies[i].pokes();
     //display
     bunnies[i].display();
   }
@@ -127,14 +134,6 @@ function BunnyRabbit(x, y) {
     this.x = this.x + random(-1, 1);
     this.y = this.y + random(-1, 1);
   };
-
-  // this.pokes = function() {
-  //   if (createSquish == "true") {
-  //       return true;
-  //     } else {
-  //     return false;
-  //   }
-  // };
 }
 
 function onBooleanMessage(name, value) {
@@ -144,6 +143,5 @@ function onBooleanMessage(name, value) {
     } else if (name == "createBunny") {
       bunnyWinner = value;
     }
-
   }
 }
