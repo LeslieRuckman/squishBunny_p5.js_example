@@ -46,11 +46,9 @@ function setup() {
 
 
 
-  // createBunny
-
+  // create the array of bunnies
   randomX = random(width);
   randomY = random(height);
-
   for (i = 0; i < 20; i++) {
     bunnies.push(new BunnyRabbit(random(width), random(height)));
   }
@@ -60,7 +58,6 @@ function setup() {
 
 function draw() {
   background(h, 100, 100);
-
   push();
   fill(0, 0, 100);
   textSize(15);
@@ -73,11 +70,11 @@ function draw() {
     //update
     bunnies[i].move();
     //check
-    //bunnies[i].pokes();
     //display
     bunnies[i].display();
   }
 
+  // declare the conditions for the squisher to win the game
   if (bunnies.length === 0) {
     push();
     fill(0, 0, 100);
@@ -88,7 +85,9 @@ function draw() {
     pop();
 
   }
-  if (bunnies.length >= 50) {
+  
+  // delcare the conditions for the bunny creator to win the game
+  if (bunnies.length >= 55) {
     push();
     fill(0, 0, 100);
     textSize(40);
@@ -99,6 +98,7 @@ function draw() {
 
   }
 
+// add bunnies to the array each time the bunnyWinner spacebrew button is pressed
   if (bunnyWinner === "true") {
     if (bunnies.length <= 50) {
       bunnies.push(new BunnyRabbit(random(width), random(height)));
@@ -108,18 +108,20 @@ function draw() {
     }
   }
 
+// delete one of the bunnies each time squishWinner spacebrew button is pressed
   if (squishWinner === "true") {
-    //   if (bunnies[i].pokes()) {
     bunnies.splice(0, 1);
     squish.setVolume(1);
     squish.play();
     squishWinner = false;
   }
-  println(squishWinner);
-  println(bunnyWinner);
+
+  //println(squishWinner);
+  //println(bunnyWinner);
 
 }
 
+// define the bunnies
 function BunnyRabbit(x, y) {
   this.x = x;
   this.y = y;
@@ -135,15 +137,9 @@ function BunnyRabbit(x, y) {
     this.x = this.x + random(-1, 1);
     this.y = this.y + random(-1, 1);
   };
-
-  // this.pokes = function() {
-  //   if (createSquish == "true") {
-  //       return true;
-  //     } else {
-  //     return false;
-  //   }
-  // };
 }
+
+// read boolean inputs from the spacebrew buttons.
 
 function onBooleanMessage(name, value) {
   {
